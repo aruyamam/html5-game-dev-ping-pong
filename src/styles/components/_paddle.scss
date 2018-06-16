@@ -1,0 +1,34 @@
+.paddle {
+  background-size: contain;
+  position: absolute;
+  top: 70px;
+  width: 30px;
+  height: 70px;
+
+  &--left {
+    left: 50px;
+    background-image: url(images/football-player-left.png);
+  }
+
+  &--right {
+    right: 50px;
+    background-image: url(images/football-player-right.png);
+  }
+}
+
+.paddle-hand {
+  background: url(images/football-player-hand.png);
+  background-size: contain;
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+
+  &--left {
+    left: 50px;
+  }
+
+  &--right {
+    right: 50px;
+  }
+}

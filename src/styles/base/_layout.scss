@@ -1,0 +1,17 @@
+#game {
+  position: relative;
+  width: 400px;
+  height: 200px;
+}
+
+#playground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('images/playground.png');
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}

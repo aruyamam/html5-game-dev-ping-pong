@@ -1,7 +1,15 @@
-$bg-color: yellow;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
 
 html {
-  body {
-    background: rgba($bg-color, 1);
-  }
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
 }
