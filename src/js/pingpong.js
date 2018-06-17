@@ -110,6 +110,18 @@ function playerRightWin() {
   pingpong.ball.directionX = 1;
 }
 
+function autoMovePaddleLeft() {
+  const speed = 4;
+  let direction = 1;
+
+  const paddleY = pingpong.paddleLeft.y + pingpong.paddleLeft.height / 2;
+  if (paddleY > pingpong.ball.y) {
+    direction = -1;
+  }
+
+  pingpong.paddleLeft.y += speed * direction;
+}
+
 // view rendering
 function renderPaddles() {
   $('#paddle-left').css('top', pingpong.paddleLeft.y);
@@ -150,6 +162,7 @@ function render() {
 
 function gameloop() {
   moveBall();
+  autoMovePaddleLeft();
 }
 
 // starting point of entire game
