@@ -34,8 +34,6 @@ const pingpong = {
   isPaused: true
 };
 
-console.log(pingpong.playground.height)
-
 // ball collision logic
 function ballHitsTopBottom() {
   var y = pingpong.ball.y + pingpong.ball.speed * pingpong.ball.directionY;
@@ -68,6 +66,25 @@ function moveBall() {
   // check left
   if (ballHitsLeftWall()) {
     playerRightWin();
+  }
+
+  // Variables for checking paddles
+  let ballX = ball.x + ball.speed * ball.directionX;
+  let ballY = ball.y + ball.speed * ball.directionY;
+
+  // check moving paddle here, later
+  // check left paddle
+  if (ballX >= pingpong.paddleLeft.x && ballX < pingpong.paddleLeft.x + pingpong.paddleLeft.width) {
+    if (ballY <= pingpong.paddleLeft.y + pingpong.paddleLeft.height && ballY >= pingpong.paddleLeft.y) {
+      ball.directionX = 1;
+    }
+  }
+
+  // check right paddle
+  if (ballX + pingpong.ball.radius >= pingpong.paddleRight.x && ballX < pingpong.paddleRight.x + pingpong.paddleRight.width) {
+    if (ballY <= pingpong.paddleRight.y + pingpong.paddleRight.height && ballY >= pingpong.paddleRight.y) {
+      ball.directionX = -1;
+    }
   }
 
   // update the ball position data
