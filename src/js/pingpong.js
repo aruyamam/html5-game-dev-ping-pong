@@ -31,7 +31,8 @@ const pingpong = {
     directionY: 1,
   },
 
-  isPaused: true
+  scoreA: 0,
+  scoreB: 0,
 };
 
 // ball collision logic
@@ -100,6 +101,10 @@ function playerLeftWin() {
 
   // update the ball location variables;
   pingpong.ball.directionX = -1;
+
+  // add score
+  pingpong.scoreA += 1;
+  $('#score-a').text(pingpong.scoreA);
 }
 
 function playerRightWin() {
@@ -108,6 +113,10 @@ function playerRightWin() {
   pingpong.ball.y = 100;
 
   pingpong.ball.directionX = 1;
+
+  // add score
+  pingpong.scoreB += 1;
+  $('#score-b').text(pingpong.scoreB);
 }
 
 function autoMovePaddleLeft() {
@@ -142,7 +151,7 @@ function handleMouseInputs() {
     pingpong.isPaused = false;
   });
 
-  // pause the gme when mouse moves out the playground.
+  // pause the game when mouse moves out the playground.
   $('#playground').mouseleave(function () {
     pingpong.isPaused = true;
   });
@@ -161,8 +170,19 @@ function render() {
 }
 
 function gameloop() {
-  moveBall();
-  autoMovePaddleLeft();
+  if (!pingpong.isPaused) {
+    moveBall();
+    autoMovePaddleLeft();
+  }
+}
+
+function gameStop() {
+  if (pingpong.isPaused) {
+    clearInterval(pingpong.timer);
+  }
+  else {
+    pingpong.timer = setInterval(gameloop, 1000 / 30);
+  }
 }
 
 // starting point of entire game
